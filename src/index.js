@@ -7,6 +7,7 @@ const GITHUB_USER_URL = "https://api.github.com/users";
 const refreshButton = document.getElementById("refreshButton");
 const closeButtons = [1, 2, 3].map(i => document.getElementById(`close${i}`));
 const elements = [1, 2, 3].map(i => document.getElementById(`element${i}`));
+const images = [1, 2, 3].map(i => document.getElementById(`image${i}`));
 
 const refreshClickStream = fromEvent(refreshButton, "click");
 const closeClickStreams = closeButtons.map(btn => fromEvent(btn, "click"));
@@ -39,19 +40,22 @@ const createSuggestionStream = (closeClickStream) => {
 
 const suggestionStreams = closeClickStreams.map(createSuggestionStream);
 
-const handleSuggestion = (element, suggestion) => {
-  if (!element) return;
+const handleSuggestion = (index, suggestion) => {
+    let element = elements[index];
+    if (!element) return;
 
-  if (suggestion === null) {
-    element.style.display = "none";
-  } else {
-    element.style.display = "block";
-    element.textContent = suggestion.login;
-  }
+    if (suggestion === null) {
+        element.style.display = "none";
+    } else {
+        element.style.display = "block";
+        element.textContent = suggestion.login;
+        element.href = `https://github.com/${suggestion.login}`
+        images[index].src = `https://github.com/${suggestion.login}.png`
+    }
 };
 
 suggestionStreams.forEach((stream, index) => {
   stream.subscribe((suggestion) => {
-    handleSuggestion(elements[index], suggestion);
+    handleSuggestion(index, suggestion);
   });
 });
