@@ -1,0 +1,25 @@
+{
+  "name": "rx-playground",
+  "version": "1.0.0",
+  "description": "experiments with reactive programming",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "s7manth",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "path": "^0.12.7",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.6.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  }
+}
