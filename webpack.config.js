@@ -6,23 +6,23 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    path: resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    path: resolve(__dirname, "dist"),
+    filename: "bundle.js",
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
-      filename: 'index.html',
+      template: "./index.html",
+      filename: "index.html",
     }),
   ],
   devServer: {
